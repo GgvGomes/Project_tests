@@ -10,7 +10,7 @@ function App() {
   //     editorState,
   //   });
   // };
-  const [convertedText, setConvertedText] = useState("Some default content");
+  const [convertedText, setConvertedText] = useState("<p>Some default content</p><p class='ql-indent-1'><strong>sdasdasdasdasdsadasdsa</strong></p>");
 
   // -> https://github.com/zenoamaro/react-quill
   // => https://github.com/zenoamaro/react-quill#quick-start
@@ -24,8 +24,14 @@ function App() {
           toolbar: [
             [{ header: [1, 2, false] }],
             ["bold", "italic", "underline", "strike", "blockquote"],
-            [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
-            ["link", 'image', 'video'],
+            [
+              { list: "ordered" },
+              { list: "bullet" },
+              { list: "check" },
+              { indent: "-1" },
+              { indent: "+1" },
+            ],
+            ["link", "image", "video"],
 
             [{ color: [] }, { background: [] }], // dropdown with defaults from theme
             [{ font: [] }],
@@ -34,7 +40,11 @@ function App() {
             ["clean"],
           ],
         }}
-        onChange={setConvertedText}
+        
+        onChange={(e) => {
+          setConvertedText(e)
+          console.log(e)
+        }}
         style={{ minHeight: "300px" }}
       />
     </div>

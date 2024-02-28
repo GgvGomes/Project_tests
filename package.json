@@ -17,6 +17,7 @@
     "@tiptap/starter-kit": "^2.2.4",
     "draft-js": "^0.11.7",
     "quill": "^2.0.0-rc.2",
+    "quill-image-resize-module-ts": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0"

@@ -42,7 +42,7 @@ function App() {
           },
 
           toolbar: [
-            [{ header: [1, 2, false] }],
+            [{ header: [1, 2, 3, 4, 5, false] }],
             ["bold", "italic", "underline", "strike", "blockquote"],
             [
               { list: "ordered" },
@@ -60,9 +60,18 @@ function App() {
             ["clean"],
           ],
         }}
-        onChange={(e) => {
+        onChange={(e, delta, source, editor) => {
+          // console.log(delta, 'dsadsa')
           setConvertedText(e);
-          // console.log(e);
+          console.log(e);
+
+          // console.log(e, delta, source, editor);
+          // Delta da pra criar uma lib e construir algo de vrdd
+
+          // console.log(editor.getBounds(0));
+          console.log(editor.getContents());
+          // console.log(editor.getHTML());
+          // console.log(editor.getSelection());
         }}
         className="text-editor"
       />
@@ -70,6 +79,7 @@ function App() {
       <ReactQuill
         theme="snow"
         readOnly
+        // onChange={(value, delta, source, editor) => {}}
         value={convertedText}
         modules={{ toolbar: [] }}
         className="text-editor text-editor-borderless"

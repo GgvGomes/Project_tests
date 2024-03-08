@@ -7,6 +7,8 @@ import "quill/dist/quill.core.css";
 import "react-quill/dist/quill.snow.css";
 import { defaultData } from "./defaultData";
 
+import {QuillDeltaToHtmlConverter} from 'quill-delta-to-html'
+
 import "./App.css";
 
 Quill.register("modules/imageResize", ImageResize as any);
@@ -70,6 +72,12 @@ function App() {
 
           // console.log(editor.getBounds(0));
           console.log(editor.getContents());
+          
+          const converter = new QuillDeltaToHtmlConverter(editor.getContents()?.ops, {
+            inlineStyles: true
+          })
+          const html = converter.convert()
+          console.log(html)
           // console.log(editor.getHTML());
           // console.log(editor.getSelection());
         }}
